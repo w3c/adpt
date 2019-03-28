@@ -140,7 +140,7 @@
         More information about what <a>Audio Description</a> is and how it works can be found at [[WHP051]].
         </p>
       <p>
-        Audio Description is usually delivered as audio, either pre-recorded or synthesised, but (until now) has not deliverable as accessible text.
+        Audio Description is usually delivered as audio, either pre-recorded or synthesised, but (until now) has not been deliverable as accessible text using an open standard.
         This report describes the requirements for text documents that can support audio description script exchange throughout the workflow from production (scripting) through to distribution (mixing either at the broadcaster or at the viewers device).
       </p>
       <p>
@@ -155,7 +155,7 @@
     <section id="scope">
       <h2>Scope</h2>
       <p>
-        This specification defines a single text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]. This profiles is intended to support audio description workflows worldwide, including description creation, script delivery and exchange and generated audio description distribution.
+        This specification defines a single text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]. This profile is intended to support audio description workflows worldwide, including description creation, script delivery and exchange and generated audio description distribution.
         The proposed profile is a syntactic subset of the Timed Text Markup Language version 2.0 [[TTML2]], and a document can simultaneously conform to both the base standard and the proposed profile.
       </p>
       <p>
@@ -289,6 +289,9 @@
         <li>SHALL implement transformation semantic support for every Feature designated as permitted by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
         <li>MAY implement transformation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
       </ul>
+      <p class="ednote">
+        Change DFXP to something more appropriate in the following note, or remove it altogether.
+      </p>
       <p class="note">
         The use of the term presentation processor (transformation processor) within this document does not imply conformance to the DFXP Presentation Profile (or DFXP Transformation Profile) specified in [[TTML2]].
         In other words, it is not considered an error for a presentation processor (transformation processor) to conform to the profile defined in this document without also conforming to the DFXP Presentation Profile (or DFXP Transformation Profile).
@@ -300,7 +303,7 @@
         The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
       </p>
     </section>
-    <section id="introduction" class=informative>
+    <section id="introduction" class="informative">
       <h2>Introduction</h2>
       <p>
         This report describes the requirements for documents needed to support audio description script exchange throughout the process from production (scripting) to distribution (mixing). This report also includes a proposed specification that meets the requirements,
@@ -324,9 +327,9 @@
         A client that is hosted 'server side' would be able to create a “broadcaster mix”, whereas a “receiver mix” could be implemented by hosting the client at the viewers device.
       </p>
     </section>
-    <section id="workflow" class=informative>
+    <section id="workflow-section" class="informative">
       <h2>Workflow</h2>
-      <section id="workflow diagram">
+      <section id="workflow-diagram">
         <h3>Figure 1 Diagram showing Audio Description Workflow</h3>
         <p>
           The following diagram illustrates the workflow related to the proposed profile described by this document:
@@ -338,7 +341,7 @@
           It is proposed that after each process in this workflow the output data may be either inserted into a manifest document such as a TTML document or referenced by it.
         </p>
       </section>
-      <section id="workflow processes">
+      <section id="workflow-processes">
       <h3>Workflow Processes</h3>
         <table class="simple">
           <thead>
@@ -376,7 +379,7 @@
         </table>
       </section>
     </section>
-    <section id="requirements">
+    <section id="requirements-section">
       <h2>Requirements</h2>
       <p>
         The following table lists the requirements at each stage of the workflow:
@@ -534,16 +537,16 @@
     </section>
     <section id="profile">
       <h2>Profile</h2>
-      <section id="General">
+      <section id="profile-general">
         <h3>General</h3>
         <p>
-          The Profile consists of <a href="#constraints" class="sec-ref">Constraints</a>.
+          The Profile consists of <a href="#profile-constraints" class="sec-ref">Constraints</a>.
         </p>
       </section>
-      <section id="Profile Resolution Semantics">
+      <section id="profile-resolution-semantics">
         <h3>Profile Resolution Semantics</h3>
         <p>
-          For the purpose of content processing, the determination of the resolved profile SHOULD take into account both the signaled profile, as defined in 9.7 <a href="Profile Signaling">Profile Signaling</a>, and profile metadata, as designated by either (or both) the Document Interchange Context or (and) the Document Processing Context, which MAY entail inspecting document content.
+          For the purpose of content processing, the determination of the resolved profile SHOULD take into account both the signaled profile, as defined in <a href="#profile-signaling-section"></a>, and profile metadata, as designated by either (or both) the Document Interchange Context or (and) the Document Processing Context, which MAY entail inspecting document content.
         </p>
         <p>
           If the resolved profile is not the Profile supported by the Processor but is feasibly interoperable with the Profile, then the resolved profile is the Profile.
@@ -555,7 +558,7 @@
         </p>
       </section>
     </section>
-    <section id="constraints">
+    <section id="profile-constraints">
       <h2>Constraints</h2>
       <section id="Document Encoding">
         <h3>Document Encoding</h3>
@@ -563,7 +566,7 @@
           A Document Instance SHALL use UTF-8 character encoding as specified in [[UNICODE]].
         </p>
       </section>
-      <section id="Foreign Element and Attributes">
+      <section id="foreign-elements-and-attributes">
         <h3>Foreign Element and Attributes</h3>
         <p>
           A Document Instance MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
@@ -598,7 +601,7 @@
               <td>XML</td>
               <td><code>xml</code></td>
               <td><code>http://www.w3.org/XML/1998/namespace</code></td>
-              <td>[<cite><a class="bibref" href="#bib-xml-names">xml-names</a></cite>]</td>
+              <td>[[xml-names]]</td>
             </tr>
             <tr>
               <td>TT</td>
@@ -639,7 +642,7 @@
           The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
         </p>
       </section>
-      <section id="Related Video Object">
+      <section id="related-video-object-section">
         <h3>Related Video Object</h3>
         <p>
           A Document Instance MAY be associated with a Related Video Object.
@@ -648,7 +651,7 @@
           While this specification contains specific provisions when a Document Instance is associated with a Related Video Object, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
         </p>
       </section>
-      <section id="Synchronization">
+      <section id="synchronization-section">
         <h3>Synchronization</h3>
         <p>
           Each intermediate synchronic document of the Document Instance is intended to be presented (audible) starting on a specific frame and removed (inaudible) by a specific frame of the Related Video Object.
@@ -666,13 +669,13 @@
           In circumstances where the video program is downsampled during delivery, the application can specify that, at playback, the relative video object be considered the delivered video program upsampled to is original rate, thereby allowing audio content to be presented at the same temporal locations it was authored.
         </p>
       </section>
-      <section id="Profile Signaling">
+      <section id="profile-signaling-section">
         <h3>Profile Signaling</h3>
         <p>
           The ttp:profile attribute SHOULD be present on the tt element and equal to the designator of the ADPT 1.0 profile to which the Document Instance conforms.
         </p>
       </section>
-      <section id="features">
+      <section id="features-section">
         <h3>Features</h3>
         <p>
           See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
@@ -729,22 +732,22 @@
             </tr>
             <tr>
               <td><code>#clockMode</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#clockMode-gps</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#clockMode-local</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#clockMode-utc</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -779,27 +782,27 @@
             </tr>
             <tr>
               <td><code>#display</code></td>
-              <td>prohibited</td>
+              <td>prohibited<p class="ednote">Consider display="none" in relation to AD content</p></td>
               <td></td>
             </tr>
             <tr>
               <td><code>#dropMode</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#dropMode-dropNTSC</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#dropMode-dropPAL</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#dropMode-nonDrop</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -888,7 +891,7 @@
             </tr>
             <tr>
               <td><code>#markerMode</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -898,7 +901,7 @@
             </tr>
             <tr>
               <td><code>#markerMode-discontinuous</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -918,12 +921,12 @@
             </tr>
             <tr>
               <td><code>#overflow</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#overflow-visible</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -950,7 +953,7 @@
               <td id="profile-constraints"><code>#profile</code></td>
               <td>permitted</td>
               <td>
-                See <a href="#profile-signaling" class="sec-ref">Profile Signaling</a>.
+                See <a href="#profile-signaling-section" class="sec-ref"></a>.
               </td>
             </tr>
             <tr>
@@ -1000,7 +1003,7 @@
             </tr>
             <tr>
               <td><code>#styling-inheritance-region</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -1031,20 +1034,20 @@
             </tr>
             <tr>
               <td><code>#timeBase-clock</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
               <td><code>#timeBase-media</code></td>
               <td>permitted</td>
               <td>
-                <p class="inline-note">NOTE: [<cite><a class="bibref" href="#bib-TTML1">TTML1</a></cite>] specifies that the default timebase is <code>"media"</code> if
+                <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
                 <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
               </td>
             </tr>
             <tr>
               <td><code>#timeBase-smpte</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -1133,7 +1136,7 @@
         </table>
       </section>
     </section>
-    <section class="appendix" id="example1">
+    <section class="appendix" id="example1-section">
       <h2>Example 1</h2>
       <p class="example" style="width:100%">
         <textarea rows="55" style="width:100%" readonly>
@@ -1191,7 +1194,7 @@ xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/
         </textarea>
       </p>
     </section>
-    <section class="appendix" id="example2">
+    <section class="appendix" id="example2-section">
       <h2>Example 2</h2>
       <p class="example" style="width:100%">
         <textarea rows="25" style="width:100%" readonly>
@@ -1219,7 +1222,7 @@ xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/
         <img src="Gain image.png" alt="An image illustrating the effect of gain on audio levels" width="100%">
       </p>
     </section>
-    <section class="appendix" id="example3">
+    <section class="appendix" id="example3-section">
       <h2>Example 3</h2>
       <p class="example" style="width:100%">
         <textarea rows="67" style="width:100%" readonly>
@@ -1328,7 +1331,7 @@ xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/
         This structure is implemented in the mixing code by constructing a Web Audio Graph, where the outputs of all the spans are, in the end, mixed together.
       </p>
     </section>
-    <section class="appendix" id="webaudio">
+    <section class="appendix" id="webaudio-section">
       <h2>Web Audio Mixing</h2>
       <p>
         <img src="Web Audio Graph.png" alt="An image illustrating the effect of pan and gain on audio in a WEBAUDIO process" width="100%">
@@ -1346,7 +1349,7 @@ xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/
         The audio output of all the leaf content elements is mixed together on the “master bus” in Web Audio terms.
       </p>
     </section>
-    <section class="appendix" id="acknowledgements">
+    <section class="appendix" id="acknowledgements-section">
       <h2>Acknowledgements)</h2>
         <p>
           The editor acknowledges the current and former members of the <abbr title="World Wide Web Consortium">W3C</abbr> Timed Text Working Group (TTWG), the members of other W3C Working Groups,
