@@ -165,6 +165,30 @@
         This document is the first version of this proposal.
       </p>
     </section>
+    <section id="introduction" class="informative">
+      <h2>Introduction</h2>
+      <p>
+        This report describes the requirements for documents needed to support audio description script exchange throughout the process from production (scripting) to distribution (mixing). This report also includes a proposed specification that meets the requirements,
+        and serves as a basis for verifying that the proposed specification intended to support that process is suitable. It is anticipated that recent additions to Timed Text Markup Language version 2.0 [[TTML2]] are sufficient to meet all of the requirements.
+        Furthermore, the requirements do not assume or require that a single document format or instance be used for every step of an Audio Description workflow, however that would appear to be desirable since it would reduce conversion step requirements.
+      </p>
+      <p>
+        The Timed Text Markup Language version 2.0 [[TTML2]] format is an xml based [[XML]] <a>markup language</a> that specifies <a>timed text</a>, so can be used for storing the <a>audio description</a> scripts.
+        This recent version of the <a>TTML</a> standard introduces audio mixing and text to speech semantics into the previous versions of the <a>TTML</a> specification.
+        These new semantics support the main requirements for audio descrition, synchronised audio playback, continuous animation, control of pan / gain for audio mixing and speech rate and pitch attributes for controlling text to speech.
+        There is support for these new TTML features in browsers using [[WEBAUDIO]] and WebSpeech respectively.
+      </p>
+      <p>
+        A requirements document has been available, published and updated on github for a period of time (approximately 2 years) [[ADPTREQS]].
+        It is considered that the captured requirements are valid at this point. Those requirements are included in this document as a rationale to support the proposed profile.
+      </p>
+      <p>
+        This document proposes an Audio Description profile of TTML that will allow the delivery of an audio description script, pre-recorded audio and mixing data in a single file using an open standard format.
+        The proposed profile should allow client implementations to provide real time mixing of the Audio Description, perhaps with some user customisation (like changing the relative volumes of the main programme audio and the AD audio).
+        Additionally, the presentation of the Audio Desciption script text on a completely different device, like a braille display may be possible.
+        A client that is hosted 'server side' would be able to create a “broadcaster mix”, whereas a “receiver mix” could be implemented by hosting the client at the viewers device.
+      </p>
+    </section>
     <section id="conventions">
       <h2>Documentation Conventions</h2>
       <p>
@@ -301,30 +325,6 @@
       </p>
       <p class="note">
         The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
-      </p>
-    </section>
-    <section id="introduction" class="informative">
-      <h2>Introduction</h2>
-      <p>
-        This report describes the requirements for documents needed to support audio description script exchange throughout the process from production (scripting) to distribution (mixing). This report also includes a proposed specification that meets the requirements,
-        and serves as a basis for verifying that the proposed specification intended to support that process is suitable. It is anticipated that recent additions to Timed Text Markup Language version 2.0 [[TTML2]] are sufficient to meet all of the requirements.
-        Furthermore, the requirements do not assume or require that a single document format or instance be used for every step of an Audio Description workflow, however that would appear to be desirable since it would reduce conversion step requirements.
-      </p>
-      <p>
-        The Timed Text Markup Language version 2.0 [[TTML2]] format is an xml based [[XML]] <a>markup language</a> that specifies <a>timed text</a>, so can be used for storing the <a>audio description</a> scripts.
-        This recent version of the <a>TTML</a> standard introduces audio mixing and text to speech semantics into the previous versions of the <a>TTML</a> specification.
-        These new semantics support the main requirements for audio descrition, synchronised audio playback, continuous animation, control of pan / gain for audio mixing and speech rate and pitch attributes for controlling text to speech.
-        There is support for these new TTML features in browsers using [[WEBAUDIO]] and WebSpeech respectively.
-      </p>
-      <p>
-        A requirements document has been available, published and updated on github for a period of time (approximately 2 years) [[ADPTREQS]].
-        It is considered that the captured requirements are valid at this point. Those requirements are included in this document as a rationale to support the proposed profile.
-      </p>
-      <p>
-        This document proposes an Audio Description profile of TTML that will allow the delivery of an audio description script, pre-recorded audio and mixing data in a single file using an open standard format.
-        The proposed profile should allow client implementations to provide real time mixing of the Audio Description, perhaps with some user customisation (like changing the relative volumes of the main programme audio and the AD audio).
-        Additionally, the presentation of the Audio Desciption script text on a completely different device, like a braille display may be possible.
-        A client that is hosted 'server side' would be able to create a “broadcaster mix”, whereas a “receiver mix” could be implemented by hosting the client at the viewers device.
       </p>
     </section>
     <section id="workflow-section" class="informative">
