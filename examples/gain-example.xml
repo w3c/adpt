@@ -1,0 +1,18 @@
+...
+<div tta:gain="0.8">
+  <p>
+    <animate begin="1s" end="2s" tta:gain="1; 0.5">
+    <animate begin="3s" end="4s" tta:gain="1; 0.5">
+    <span begin="2s" end="3s">
+      Imagine this is a description
+    </span>
+  </p>
+  <p>
+    <animate begin="10s" end="12s" tta:gain="1; 0.5">
+    <animate begin="13s" end="14s" tta:gain="1; 0.5">
+    <span begin="12s" end="13s">
+      And this is another description
+    </span>
+  </p>
+</div>
+...

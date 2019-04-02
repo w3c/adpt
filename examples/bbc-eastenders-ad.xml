@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <body>
+    <tt xmlns="http://www.w3.org/ns/ttml" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en">
+    <div>
+      <audio src=";track=1" tta:pan="-1"/>
+      <audio src=";track=2" tta:pan="1"/>
+      <p xml:id="ad21b" begin="5.48s" end="19.44s" tta:gain="0.25">
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="13.84s" end="13.96s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="13.84s" tta:gain="0.25">
+          <audio src="DRAD182Y01.wav" clipBegin="11.6s" clipEnd="24.32s"/>
+          BBC Eastenders written by Colin Wyatt starring June Brown as Dot, John Altman as Nick, Declan Bennett as Charlie and Samantha Womack as Ronnie.</span>
+      </p>
+      <p xml:id="ad31b" begin="30.56s" end="32.84s" tta:gain="0.25">
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="2.16s" end="2.28s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="2.16s" tta:gain="0.25">
+          <audio src="DRAD182Y01.wav" clipBegin="35.68s" clipEnd="37.72s"/>
+          Nick takes a drag of his cigarette.</span>
+      </p>
+      <p xml:id="ad41b" begin="49.32s" end="51.16s">
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="1.72s" end="1.84s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="1.72s">
+          <audio src="DRAD182Y01.wav" clipBegin="54.44s" clipEnd="56.04s"/>
+          Nick gets up.</span>
+      </p>
+      <p xml:id="ad51b" begin="54.92s" end="57.08s">
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="2.04s" end="2.16s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="2.04s">
+          <audio src="DRAD182Y01.wav" clipBegin="60.04s" clipEnd="61.96s"/>
+          He grabs a knife.</span>
+      </p>
+      <p xml:id="ad61b" begin="62.24s" end="71.52s">
+        <ttm:desc ttm:role="x-shotDescription">SHOT CHANGE: 62.36s Nick Cotton centre screen facing right.</ttm:desc>
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="9.16s" end="9.28s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="9.16s">
+          <audio src=";track=2" tta:gain="0.25"/>
+          Ronnie looks worried but he grabs a swiss roll from a carrier bag and roughly cuts off two slices offering her one on the end of a knife.</span>
+      </p>
+      <p xml:id="ad71b" begin="79.2s" end="82.12s">
+        <ttm:desc ttm:role="x-pronunciationNote">PRON: Koosh.</ttm:desc>
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="2.8s" end="2.92s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="2.8s">
+          <audio src="DRAD182Y01.wav" clipBegin="84.32s" clipEnd="87.0s"/>
+          Sonia leaves the Vic followed by Kush </span>
+      </p>
+      <p xml:id="ad91b" begin="115.16s" end="117.12s">
+        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
+        <animate begin="1.84s" end="1.96s" tta:gain="0.39;1"/>
+        <span begin="0.12s" end="1.84s">
+          <audio src="DRAD182Y01.wav" clipBegin="120.28s" clipEnd="122.0s"/>
+          At Dot's...</span>
+      </p>
+    </div>
+  </body>
+</tt>

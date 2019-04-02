@@ -1138,156 +1138,19 @@
     </section>
     <section class="appendix" id="example1-section">
       <h2>Example 1</h2>
-      <p class="example" style="width:100%">
-        <textarea rows="55" style="width:100%" readonly>
-<?xml version="1.0" encoding="UTF-8"?>
-<tt xmlns=http://www.w3.org/ns/ttml xmlns:ttp=http://www.w3.org/ns/ttml#parameter
-xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/xlink">
-<body>
-  <div>
-
-    <!-- From 1s to 10s should set the gain on track1 to 0.25 -->
-    <!-- (sounds like half volume, which is -6dB) -->
-    <p begin="45s" end="49s">
-      <span>
-        <audio src=";track=1" tta:gain="1"/>
-          Channel 1 is normal volume
-      </span>
-    </p>
-    <p begin="50s" end="54s">
-      <span>
-        <audio src=";track=1" tta:gain="0.25"/>
-          Channel 1 is half volume
-      </span>
-    </p>
-    <p begin="60s" end="64s">
-      <span>
-        <audio src=";track=1" tta:pan="1"/>
-          Channel 1 Audio only on right
-      </span>
-    </p>
-
-    <!-- TTS Spoken Elements. -->
-    <p begin="85s" end="89s">
-      <span>
-        <audio tta:speak="normal" tta:gain="1" src="./audio/this_is_normal_volume.mp3"/>
-          This is normal volume
-      </span>
-    </p>
-    <p begin="90s" end="94s">
-      <span>
-        <audio tta:speak="normal" tta:gain="0.25" src="./audio/this_is_half_volume.mp3"/>
-          This is half volume
-      </span>
-    </p>
-    <p begin="95s" end="99s">
-      <span>
-        <audio tta:speak="normal" tta:gain="0" src="./audio/this_is_muted.mp3"/>
-          This is muted
-      </span>
-    </p>
-
-    <audio begin="150s" end="180s" clipBegin="18s" clipEnd="41s" src="./audio/great_british_menu.mp3"/>
-
-  </div>
-</body>
-        </textarea>
-      </p>
+      <pre class="example"
+        data-include="examples/ttml2-test-example.xml"
+        data-include-format="text">
+      </pre>
+      
     </section>
-    <section class="appendix" id="example2-section">
-      <h2>Example 2</h2>
-      <p class="example" style="width:100%">
-        <textarea rows="25" style="width:100%" readonly>
-...
-<div tta:gain="0.8">
-  <p>
-    <animate begin="1s" end="2s" tta:gain="1; 0.5">
-    <animate begin="3s" end="4s" tta:gain="1; 0.5">
-    <span begin="2s" end="3s">
-      Imagine this is a description
-    </span>
-  </p>
-  <p>
-    <animate begin="10s" end="12s" tta:gain="1; 0.5">
-    <animate begin="13s" end="14s" tta:gain="1; 0.5">
-    <span begin="12s" end="13s">
-      And this is another description
-    </span>
-  </p>
-</div>
-...
-        </textarea>
-      </p>
-      <p>
-        <img src="Gain image.png" alt="An image illustrating the effect of gain on audio levels" width="100%">
-      </p>
-    </section>
+
     <section class="appendix" id="example3-section">
       <h2>Example 3</h2>
-      <p class="example" style="width:100%">
-        <textarea rows="67" style="width:100%" readonly>
-<?xml version="1.0" encoding="UTF-8"?>
-  <body>
-    <tt xmlns="http://www.w3.org/ns/ttml" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en">
-    <div>
-      <audio src=";track=1" tta:pan="-1"/>
-      <audio src=";track=2" tta:pan="1"/>
-      <p xml:id="ad21b" begin="5.48s" end="19.44s" tta:gain="0.25">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="13.84s" end="13.96s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="13.84s" tta:gain="0.25">
-          <audio src="DRAD182Y01.wav" clipBegin="11.6s" clipEnd="24.32s"/>
-          BBC Eastenders written by Colin Wyatt starring June Brown as Dot, John Altman as Nick, Declan Bennett as Charlie and Samantha Womack as Ronnie.</span>
-      </p>
-      <p xml:id="ad31b" begin="30.56s" end="32.84s" tta:gain="0.25">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="2.16s" end="2.28s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="2.16s" tta:gain="0.25">
-          <audio src="DRAD182Y01.wav" clipBegin="35.68s" clipEnd="37.72s"/>
-          Nick takes a drag of his cigarette.</span>
-      </p>
-      <p xml:id="ad41b" begin="49.32s" end="51.16s">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="1.72s" end="1.84s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="1.72s">
-          <audio src="DRAD182Y01.wav" clipBegin="54.44s" clipEnd="56.04s"/>
-          Nick gets up.</span>
-      </p>
-      <p xml:id="ad51b" begin="54.92s" end="57.08s">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="2.04s" end="2.16s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="2.04s">
-          <audio src="DRAD182Y01.wav" clipBegin="60.04s" clipEnd="61.96s"/>
-          He grabs a knife.</span>
-      </p>
-      <p xml:id="ad61b" begin="62.24s" end="71.52s">
-        <ttm:desc ttm:role="x-shotDescription">SHOT CHANGE: 62.36s Nick Cotton centre screen facing right.</ttm:desc>
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="9.16s" end="9.28s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="9.16s">
-          <audio src=";track=2" tta:gain="0.25"/>
-          Ronnie looks worried but he grabs a swiss roll from a carrier bag and roughly cuts off two slices offering her one on the end of a knife.</span>
-      </p>
-      <p xml:id="ad71b" begin="79.2s" end="82.12s">
-        <ttm:desc ttm:role="x-pronunciationNote">PRON: Koosh.</ttm:desc>
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="2.8s" end="2.92s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="2.8s">
-          <audio src="DRAD182Y01.wav" clipBegin="84.32s" clipEnd="87.0s"/>
-          Sonia leaves the Vic followed by Kush </span>
-      </p>
-      <p xml:id="ad91b" begin="115.16s" end="117.12s">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="1.84s" end="1.96s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="1.84s">
-          <audio src="DRAD182Y01.wav" clipBegin="120.28s" clipEnd="122.0s"/>
-          At Dot's...</span>
-      </p>
-    </div>
-  </body>
-</tt>
-        </textarea>
-      </p>
+      <pre class="example"
+        data-include="examples/bbc-eastenders-ad.xml"
+        data-include-format="text">
+      </pre>
       <p>
         We have a div element that wraps all the other content. Crucially it includes two audio element children, which do a few things:
         <ul>
@@ -1347,6 +1210,14 @@ xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/
       </p>
       <p>
         The audio output of all the leaf content elements is mixed together on the “master bus” in Web Audio terms.
+      </p>
+      <pre class="example"
+        data-include="examples/gain-example.xml"
+        data-include-format="text">
+      </pre>
+
+      <p>
+        <img src="Gain image.png" alt="An image illustrating the effect of gain on audio levels" width="100%">
       </p>
     </section>
     <section class="appendix" id="acknowledgements-section">

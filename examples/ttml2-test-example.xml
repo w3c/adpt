@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt xmlns=http://www.w3.org/ns/ttml xmlns:ttp=http://www.w3.org/ns/ttml#parameter
+xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/xlink">
+<body>
+  <div>
+
+    <!-- From 1s to 10s should set the gain on track1 to 0.25 -->
+    <!-- (sounds like half volume, which is -6dB) -->
+    <p begin="45s" end="49s">
+      <span>
+        <audio src=";track=1" tta:gain="1"/>
+          Channel 1 is normal volume
+      </span>
+    </p>
+    <p begin="50s" end="54s">
+      <span>
+        <audio src=";track=1" tta:gain="0.25"/>
+          Channel 1 is half volume
+      </span>
+    </p>
+    <p begin="60s" end="64s">
+      <span>
+        <audio src=";track=1" tta:pan="1"/>
+          Channel 1 Audio only on right
+      </span>
+    </p>
+
+    <!-- TTS Spoken Elements. -->
+    <p begin="85s" end="89s">
+      <span>
+        <audio tta:speak="normal" tta:gain="1" src="./audio/this_is_normal_volume.mp3"/>
+          This is normal volume
+      </span>
+    </p>
+    <p begin="90s" end="94s">
+      <span>
+        <audio tta:speak="normal" tta:gain="0.25" src="./audio/this_is_half_volume.mp3"/>
+          This is half volume
+      </span>
+    </p>
+    <p begin="95s" end="99s">
+      <span>
+        <audio tta:speak="normal" tta:gain="0" src="./audio/this_is_muted.mp3"/>
+          This is muted
+      </span>
+    </p>
+
+    <audio begin="150s" end="180s" clipBegin="18s" clipEnd="41s" src="./audio/great_british_menu.mp3"/>
+
+  </div>
+</body>
+</tt>
