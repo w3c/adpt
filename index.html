@@ -628,7 +628,7 @@
               <td><code>#frameRate</code></td>
               <td>permitted</td>
               <td>
-                If the <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> includes any clock time expression that uses the <code>frames</code> term or any
+                If the <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> includes any time expression that uses the <code>frames</code> term or any
                 offset time expression that uses the <code>f</code> metric, the <code>ttp:frameRate</code> attribute <em class="rfc2119" title="SHALL">SHALL</em> be present
                 on the <code>tt</code> element.
               </td>
@@ -695,7 +695,7 @@
             </tr>
             <tr>
               <td><code>#markerMode-continuous</code></td>
-              <td>permitted</td>
+              <td>prohibited</td>
               <td></td>
             </tr>
             <tr>
@@ -754,6 +754,11 @@
               <td>
                 See <a href="#profile-signaling-section" class="sec-ref"></a>.
               </td>
+            </tr>
+            <tr>
+              <td><code>#region-timing</code></td>
+              <td>prohibited</td>
+              <td></td>
             </tr>
             <tr>
               <td><code>#resources</code></td>
