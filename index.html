@@ -14,12 +14,6 @@
         shortName: "adept",
         tocIntroductory: true,
         localBiblio: {
-          "TTML2": {
-            title: "TTML 2 W3C Proposed Recommendation 04 October 2018",
-            href: "https://www.w3.org/TR/2018/PR-ttml2-20181004/",
-            status: "PR",
-            publisher: "W3C",
-          },
           "WHP051": {
             title: "BBC R&D White Paper WHP 051. Audio Description: what it is and how it works",
             publisher: " N.E. Tanton, T. Ware and M. Armstrong",
@@ -29,39 +23,6 @@
           "MAUR": {
             title: "Media Accessibility User Requirements",
             href: "https://www.w3.org/TR/media-accessibility-reqs/",
-          },
-          "WEBAUDIO": {
-            title: "Web Audio API Editor’s Draft",
-            href: "https://webaudio.github.io/web-audio-api/",
-          },
-          "UNICODE": {
-            title: "The Unicode Standard",
-            publisher: "Unicode Consortium",
-            href: "https://www.unicode.org/versions/latest/",
-          },
-          "WCAG20": {
-            title: "Web Content Accessibility Guidelines (WCAG) 2.0",
-            publisher: "Ben Caldwell, Michael Cooper, Loretta Guarino Reid, Gregg Vanderheiden et al. W3C. 11 December 2008",
-            status: "W3C Recommendation",
-            href: "https://www.w3.org/TR/2008/REC-WCAG20-20081211/",
-          },
-          "XML": {
-            title: "Extensible Markup Language (XML) 1.0 (Fifth Edition)",
-            publisher: "Tim Bray, Jean Paoli, Michael Sperberg-McQueen, Eve Maler, François Yergeau et al. W3C. 26 November 2008",
-            status: "W3C Recommendation",
-            href: "https://www.w3.org/TR/2008/REC-xml-20081126/",
-          },
-          "XMLNAMES": {
-            title: "Namespaces in XML 1.0 (Third Edition)",
-            publisher: "Tim Bray, Dave Hollander, Andrew Layman, Richard Tobin, Henry Thompson et al. W3C. 8 December 2009",
-            status: "W3C Recommendation",
-            href: "https://www.w3.org/TR/2009/REC-xml-names-20091208/",
-          },
-          "XSL11": {
-            title: "Extensible Stylesheet Language (XSL) Version 1.1",
-            publisher: "Anders Berglund. W3C. 5 December 2006",
-            status: "W3C Recommendation",
-            href: "https://www.w3.org/TR/2006/REC-xsl11-20061205/",
           },
           "ADPTREQS": {
             title: "Requirements for Audio (Video) Description – DRAFT FOR REVIEW",
@@ -144,7 +105,8 @@
         This report describes the requirements for text documents that can support audio description script exchange throughout the workflow from production (scripting) through to distribution (mixing either at the broadcaster or at the viewers device).
       </p>
       <p>
-        This document is a Community Group Report, including requirements and a proposed specification that meets the requirements.
+        This document is a Community Group Report, including 
+        <a href="#requirements">requirements</a> and a proposed specification that meets the requirements.
         The proposed specification is a <a>profile</a> of the Timed Text Markup Language version 2.0 [[TTML2]].
       </p>
     </section>
@@ -164,6 +126,74 @@
       <p>
         This document is the first version of this proposal.
       </p>
+    </section>
+    <section id="introduction" class="informative">
+      <h2>Introduction</h2>
+      <p>
+        This report specifies a <a>profile</a> of [[TTML2]] that meets the <a href="#requirements">requirements</a> for documents needed to support audio description script exchange throughout the
+        <a href="#workflow">workflow</a> from production (scripting) to distribution (mixing). This report also includes a proposed specification that meets those requirements,
+        and serves as a basis for verifying that the proposed specification intended to support that process is suitable. It is anticipated that recent additions to Timed Text Markup Language version 2.0 [[TTML2]] are sufficient to meet all of the requirements.
+        Furthermore, the requirements do not assume or require that a single document format or instance be used for every step of an Audio Description workflow, however that would appear to be desirable since it would reduce conversion step requirements.
+      </p>
+      <p>
+        The Timed Text Markup Language version 2.0 [[TTML2]] format is an xml based [[XML]] <a>markup language</a> that specifies <a>timed text</a>, so can be used for storing the <a>audio description</a> scripts.
+        This recent version of the <a>TTML</a> standard introduces audio mixing and text to speech semantics into the previous versions of the <a>TTML</a> specification.
+        These new semantics support the main requirements for audio descrition, synchronised audio playback, continuous animation, control of pan / gain for audio mixing and speech rate and pitch attributes for controlling text to speech.
+        There is support for these new TTML features in browsers using [[WEBAUDIO]] and WebSpeech respectively.
+      </p>
+      <p>
+        A requirements document has been available, published and updated on github for a period of time (approximately 2 years) [[ADPTREQS]].
+        It is considered that the captured requirements are valid at this point. Those requirements are included in this document as a rationale to support the proposed profile.
+      </p>
+      <p>
+        This document proposes an Audio Description profile of TTML that will allow the delivery of an audio description script, pre-recorded audio and mixing data in a single file using an open standard format.
+        The proposed profile should allow client implementations to provide real time mixing of the Audio Description, perhaps with some user customisation (like changing the relative volumes of the main programme audio and the AD audio).
+        Additionally, the presentation of the Audio Desciption script text on a completely different device, like a braille display may be possible.
+        A client that is hosted 'server side' would be able to create a “broadcaster mix”, whereas a “receiver mix” could be implemented by hosting the client at the viewers device.
+      </p>
+      <section id="intro-example">
+        <h3>Example documents</h3>
+        <p>The following example shows an audio description script, with times
+        and text, before any audio has been added.</p>
+        <pre class="example"
+          data-include="examples/intro-script.xml"
+          data-include-format="text">
+        </pre>
+        <p>References to audio recordings of the voiced words can be added:</p>
+        <pre class="example"
+          data-include="examples/intro-script-with-audio.xml"
+          data-include-format="text">
+        </pre>
+        <p>If the audio recording is long and just a snippet needs to be played,
+        that can be done using <code>clipBegin</code> and <code>clipEnd</code>.
+        If we just want to play the part of the audio from file from 5s to
+        8s it would look like:</p>
+        <pre class="example"
+          data-include="examples/intro-script-with-audio-clipped.xml"
+          data-include-format="text">
+        </pre>
+        <p>Or audio attributes can be added to trigger the text to be spoken:
+        </p>
+        <pre class="example"
+          data-include="examples/intro-script-with-speak.xml"
+          data-include-format="text">
+        </pre>
+        <p>The gain of "received" audio can be changed before mixing in
+        the audio played from inside the <code>span</code>, smoothly
+        animating the value on the way in and returning it on the way out:</p>
+        <pre class="example"
+          data-include="examples/intro-script-with-gain.xml"
+          data-include-format="text">
+        </pre>
+        <p>In the above example, the <code>div</code> element's
+          <code>begin</code> time becomes the "syncbase" for its child, 
+          so the times on the <code>animate</code> and <code>span</code> 
+          elements are relative to 25s here.
+          The first <code>animate</code> element drops the gain from 1
+          to 0.39 over 0.3s, and the second one raises it back in the
+          final 0.3s of this description. Then the <code>span</code> is
+          timed to begin only after the first audio dip has finished.</p>
+      </section>
     </section>
     <section id="conventions">
       <h2>Documentation Conventions</h2>
@@ -301,238 +331,6 @@
       </p>
       <p class="note">
         The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
-      </p>
-    </section>
-    <section id="introduction" class="informative">
-      <h2>Introduction</h2>
-      <p>
-        This report describes the requirements for documents needed to support audio description script exchange throughout the process from production (scripting) to distribution (mixing). This report also includes a proposed specification that meets the requirements,
-        and serves as a basis for verifying that the proposed specification intended to support that process is suitable. It is anticipated that recent additions to Timed Text Markup Language version 2.0 [[TTML2]] are sufficient to meet all of the requirements.
-        Furthermore, the requirements do not assume or require that a single document format or instance be used for every step of an Audio Description workflow, however that would appear to be desirable since it would reduce conversion step requirements.
-      </p>
-      <p>
-        The Timed Text Markup Language version 2.0 [[TTML2]] format is an xml based [[XML]] <a>markup language</a> that specifies <a>timed text</a>, so can be used for storing the <a>audio description</a> scripts.
-        This recent version of the <a>TTML</a> standard introduces audio mixing and text to speech semantics into the previous versions of the <a>TTML</a> specification.
-        These new semantics support the main requirements for audio descrition, synchronised audio playback, continuous animation, control of pan / gain for audio mixing and speech rate and pitch attributes for controlling text to speech.
-        There is support for these new TTML features in browsers using [[WEBAUDIO]] and WebSpeech respectively.
-      </p>
-      <p>
-        A requirements document has been available, published and updated on github for a period of time (approximately 2 years) [[ADPTREQS]].
-        It is considered that the captured requirements are valid at this point. Those requirements are included in this document as a rationale to support the proposed profile.
-      </p>
-      <p>
-        This document proposes an Audio Description profile of TTML that will allow the delivery of an audio description script, pre-recorded audio and mixing data in a single file using an open standard format.
-        The proposed profile should allow client implementations to provide real time mixing of the Audio Description, perhaps with some user customisation (like changing the relative volumes of the main programme audio and the AD audio).
-        Additionally, the presentation of the Audio Desciption script text on a completely different device, like a braille display may be possible.
-        A client that is hosted 'server side' would be able to create a “broadcaster mix”, whereas a “receiver mix” could be implemented by hosting the client at the viewers device.
-      </p>
-    </section>
-    <section id="workflow-section" class="informative">
-      <h2>Workflow</h2>
-      <section id="workflow-diagram">
-        <h3>Figure 1 Diagram showing Audio Description Workflow</h3>
-        <p>
-          The following diagram illustrates the workflow related to the proposed profile described by this document:
-        </p>
-        <p>
-          <img src="Audio_Description_Requirements_Diagrams.png" alt="Audio Description Workflow diagram" width="458" height="860">
-        </p>
-        <p>
-          It is proposed that after each process in this workflow the output data may be either inserted into a manifest document such as a TTML document or referenced by it.
-        </p>
-      </section>
-      <section id="workflow-processes">
-      <h3>Workflow Processes</h3>
-        <table class="simple">
-          <thead>
-            <tr>
-              <th style="width:35%">Process step</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1. Identify gaps in programme dialog</td>
-              <td>Automatically or manually process the programme audio track to identify intervals within which description audio may be inserted.</td>
-            </tr>
-            <tr>
-              <td>2. Write script</td>
-              <td>Write a set of descriptions to fit within the identified gaps.</td>
-            </tr>
-            <tr>
-              <td>3. 'Voice' the script or </br>synthesise audio</td>
-              <td>Generate an audio rendition of the script either by using an actor or voicer and recording the speech or synthesise the audio description by using a text to speech system. This is typically a mono audio track that may be delivered as a single track that is the same duration as the programme or as a set of short audio tracks each beginning at a defined time.</td>
-            </tr>
-            <tr>
-              <td>4. Define AD track </br>left/right pan data</td>
-              <td>Select a horizontal pan position to apply to the audio rendition of the description when mixing with the main programme audio.<br>This is typically a single value that applies to each description.</td>
-            </tr>
-            <tr>
-              <td>5. Define main programme</br> audio levels during AD</td>
-              <td>Select the amount by which to lower the main programme audio prior to mixing in the description audio.<br>This is typically defined as a curve defined by a set of moments in time and fade levels to apply, with an interpolation algorithm to vary the levels between each moment in time.</td>
-            </tr>
-            <tr>
-              <td>6. Mix programme audio with descriptions</td>
-              <td>Mix the programme audio with the rendered descriptions.<br>This may be pre-mixed (also known as “broadcaster mix”) prior to delivery to the audience, or mixed in real time (also known as “receiver mix”) at playback time; mixing at playback time is a requirement to enable user customisation of the relative levels of main programme audio and descriptions. See [BBC_RD_WHP051] for the reference model for this.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </section>
-    <section id="requirements-section">
-      <h2>Requirements</h2>
-      <p>
-        The following table lists the requirements at each stage of the workflow:
-      </p>
-      <table class="simple">
-        <thead>
-          <tr>
-            <th style="width:20%">Requirement ID</th>
-            <th style="width:15%">Process step</th>
-            <th>Requirement</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ADR1</td>
-            <td>1</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to define a list of intervals, each defined by a begin time and an end time that are opportunities for adding descriptions.</li>
-                <li>[[MAUR]] DV-2 Render descriptions in a time-synchronized manner, using the primary media resource as the timebase master.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR2</td>
-            <td>2</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to incorporate description text to be voiced, each description located within a timed interval defined by a begin time and an end time.</li>
-                <li>[[MAUR]] TVD-2 TVDs need to be provided in a format that contains the following information:
-                  <ol type="a">
-                    <li>start time, text per description cue (the duration is determined dynamically, though an end time could provide a cut point)</li>
-                    <li>possibly a speech-synthesis markup to improve quality of the description (existing speech synthesis markups include SSML and CSS 3 Speech Module)</li>
-                    <li>accompanying metadata providing labeling for speakers, language, etc. and</li>
-                    <li>visual style markup.</li>
-                  </ol>
-                </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR3</td>
-            <td>2</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to incorporate additional user defined metadata associated with each description; metadata schemes may be user defined or centrally defined.
-                For example the language of the description may be stored, notes made by the script writer.</li>
-                <li>[[MAUR]] DV-10 Allow the user to select from among different languages of descriptions, if available, even if they are different from the language of the main soundtrack.</li>
-                <li>[[MAUR]] DV-13 Support metadata, such as   copyright information, usage rights, language, etc.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR4</td>
-            <td>2</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be extensible to allow incorporation of data required to achieve the desired quality of audio presentation, whether manual or automated.
-                  For example it is typical to include information about what gender and age voice would be appropriate to voice the descriptions;
-                  it is also feasible to include data used to improve the quality of text to speech synthesis, such as phonetic descriptions of the text, intonation and emotion data etc.</li>
-                <li>The format of any  extensions for this purpose need not be defined.</li>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR12</td>
-            <td>3</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to reference audio tracks either included as binary data within the document or separately.</li>
-                <li>[[MAUR]] DV-4 Support recordings of high quality speech as a track of the media resource, or as an external file.</li>
-                <li>[[MAUR]] DV-9 Allow the author to use a codec which is optimized for voice only, rather than requiring the same codec as the original soundtrack.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR5</td>
-            <td>3</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to associate a begin time with the beginning of playback of each audio track, for the case that multiple audio tracks are created, one per description.</li>
-                <li>[[MAUR]] DV-2 Render descriptions in a time-synchronized manner, using the primary media resource as the timebase master.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR6</td>
-            <td>3</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to associate a begin time with a playback entry time within an audio track, for the case that a single audio track is generated that is the same duration as the main programme audio.</li>
-                <li>The begin time and the playback entry time may be required to be synchronous (coincident values) within the document structure.</li>
-                <li>[[MAUR]] DV-2 Render descriptions in a time-synchronized manner, using the primary media resource as the timebase master.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR7</td>
-            <td>4</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to associate a left/right pan value with playback of each or every audio description.
-                  This value applies to the audio description prior to mixing with the main programme audio.</li>
-                <li>[[MAUR]] DV-8 Allow the author to provide fade and pan controls to be accurately synchronized with the original soundtrack.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR8</td>
-            <td>5</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The document must be able to define a fade level curve that applies to the main programme audio prior to mixing with the audio description, where that fade level curve is defined by a set of pairs of level and times and an interpolation algorithm. </li>
-                <li>[[MAUR]] DV-5 Allow the author to independently adjust the volumes of the audio description and original soundtracks where these are available as separate audio channel resources.</li>
-                <li>[[MAUR]] DV-7 Permit smooth changes in volume rather than stepped changes. The degree and speed of volume change should be under user control.</li>
-                <li>[[MAUR]] DV-8 Allow the author to provide fade and pan controls to be accurately synchronized with the original soundtrack.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR9</td>
-            <td>6</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The processor must be able to generate a set of directives to control an audio mixer to generate the desired audio description mixed audio track honouring the pan and fade information within the document.</li>
-                <li>The format of those directives may be implementation dependent.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR10</td>
-            <td>6</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The processor may modify the audio mixer control directives under user control to customise the relative levels of main programme audio and audio description, and the pan information.</li>
-                <li>[[MAUR]] DV-6 Allow the user to independently adjust the volumes of the audio description and original soundtracks (where these are available as separate audio channel resources), with the user's settings overriding the author's.</li>
-                <li>[[MAUR]] DV-12 Allow the user to relocate the pan location of the various audio tracks within the audio field, with the user setting overriding the author setting.</br>
-                  The setting should be re-adjustable as the media plays.</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>ADR11</td>
-            <td>6</td>
-            <td>
-              <ul style="list-style-type:disc">
-                <li>The audio mixing transitions and semantics must be implementable using [[WEBAUDIO]], specifically relating to the application of gain and pan as defined therein and the interpolation between values.</li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p class ="note">
-        [[WEBAUDIO]] specifies three interpolation mechanisms for traversing from one parameter value to another: linear, exponential and linear interpolation between points on a curve, where the default ramp e.g. for setTargetAtTime uses an exponential interpolation.
       </p>
     </section>
     <section id="profile">
@@ -1136,158 +934,250 @@
         </table>
       </section>
     </section>
-    <section class="appendix" id="example1-section">
-      <h2>Example 1</h2>
-      <p class="example" style="width:100%">
-        <textarea rows="55" style="width:100%" readonly>
-<?xml version="1.0" encoding="UTF-8"?>
-<tt xmlns=http://www.w3.org/ns/ttml xmlns:ttp=http://www.w3.org/ns/ttml#parameter
-xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/xlink">
-<body>
-  <div>
-
-    <!-- From 1s to 10s should set the gain on track1 to 0.25 -->
-    <!-- (sounds like half volume, which is -6dB) -->
-    <p begin="45s" end="49s">
-      <span>
-        <audio src=";track=1" tta:gain="1"/>
-          Channel 1 is normal volume
-      </span>
-    </p>
-    <p begin="50s" end="54s">
-      <span>
-        <audio src=";track=1" tta:gain="0.25"/>
-          Channel 1 is half volume
-      </span>
-    </p>
-    <p begin="60s" end="64s">
-      <span>
-        <audio src=";track=1" tta:pan="1"/>
-          Channel 1 Audio only on right
-      </span>
-    </p>
-
-    <!-- TTS Spoken Elements. -->
-    <p begin="85s" end="89s">
-      <span>
-        <audio tta:speak="normal" tta:gain="1" src="./audio/this_is_normal_volume.mp3"/>
-          This is normal volume
-      </span>
-    </p>
-    <p begin="90s" end="94s">
-      <span>
-        <audio tta:speak="normal" tta:gain="0.25" src="./audio/this_is_half_volume.mp3"/>
-          This is half volume
-      </span>
-    </p>
-    <p begin="95s" end="99s">
-      <span>
-        <audio tta:speak="normal" tta:gain="0" src="./audio/this_is_muted.mp3"/>
-          This is muted
-      </span>
-    </p>
-
-    <audio begin="150s" end="180s" clipBegin="18s" clipEnd="41s" src="./audio/great_british_menu.mp3"/>
-
-  </div>
-</body>
-        </textarea>
+    <section id="workflow" class="informative appendix">
+      <h2>Workflow</h2>
+      <section id="workflow-diagram">
+        <h3>Figure 1 Diagram showing Audio Description Workflow</h3>
+        <p>
+          The following diagram illustrates the workflow related to the proposed profile described by this document:
+        </p>
+        <p>
+          <img src="Audio_Description_Requirements_Diagrams.png" alt="Audio Description Workflow diagram" width="458" height="860">
+        </p>
+        <p>
+          It is proposed that after each process in this workflow the output data may be either inserted into a manifest document such as a TTML document or referenced by it.
+        </p>
+      </section>
+      <section id="workflow-processes">
+      <h3>Workflow Processes</h3>
+        <table class="simple">
+          <thead>
+            <tr>
+              <th style="width:35%">Process step</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Identify gaps in programme dialog</td>
+              <td>Automatically or manually process the programme audio track to identify intervals within which description audio may be inserted.</td>
+            </tr>
+            <tr>
+              <td>2. Write script</td>
+              <td>Write a set of descriptions to fit within the identified gaps.</td>
+            </tr>
+            <tr>
+              <td>3. 'Voice' the script or </br>synthesise audio</td>
+              <td>Generate an audio rendition of the script either by using an actor or voicer and recording the speech or synthesise the audio description by using a text to speech system. This is typically a mono audio track that may be delivered as a single track that is the same duration as the programme or as a set of short audio tracks each beginning at a defined time.</td>
+            </tr>
+            <tr>
+              <td>4. Define AD track </br>left/right pan data</td>
+              <td>Select a horizontal pan position to apply to the audio rendition of the description when mixing with the main programme audio.<br>This is typically a single value that applies to each description.</td>
+            </tr>
+            <tr>
+              <td>5. Define main programme</br> audio levels during AD</td>
+              <td>Select the amount by which to lower the main programme audio prior to mixing in the description audio.<br>This is typically defined as a curve defined by a set of moments in time and fade levels to apply, with an interpolation algorithm to vary the levels between each moment in time.</td>
+            </tr>
+            <tr>
+              <td>6. Mix programme audio with descriptions</td>
+              <td>Mix the programme audio with the rendered descriptions.<br>This may be pre-mixed (also known as “broadcaster mix”) prior to delivery to the audience, or mixed in real time (also known as “receiver mix”) at playback time; mixing at playback time is a requirement to enable user customisation of the relative levels of main programme audio and descriptions. See [BBC_RD_WHP051] for the reference model for this.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+    <section id="requirements" class="informative appendix">
+      <h2>Requirements</h2>
+      <p>
+        The following table lists the requirements at each stage of the workflow:
+      </p>
+      <table class="simple">
+        <thead>
+          <tr>
+            <th style="width:20%">Requirement ID</th>
+            <th style="width:15%">Process step</th>
+            <th>Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ADR1</td>
+            <td>1</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to define a list of intervals, each defined by a begin time and an end time that are opportunities for adding descriptions.</li>
+                <li>[[MAUR]] DV-2 Render descriptions in a time-synchronized manner, using the primary media resource as the timebase master.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR2</td>
+            <td>2</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to incorporate description text to be voiced, each description located within a timed interval defined by a begin time and an end time.</li>
+                <li>[[MAUR]] TVD-2 TVDs need to be provided in a format that contains the following information:
+                  <ol type="a">
+                    <li>start time, text per description cue (the duration is determined dynamically, though an end time could provide a cut point)</li>
+                    <li>possibly a speech-synthesis markup to improve quality of the description (existing speech synthesis markups include SSML and CSS 3 Speech Module)</li>
+                    <li>accompanying metadata providing labeling for speakers, language, etc. and</li>
+                    <li>visual style markup.</li>
+                  </ol>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR3</td>
+            <td>2</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to incorporate additional user defined metadata associated with each description; metadata schemes may be user defined or centrally defined.
+                For example the language of the description may be stored, notes made by the script writer.</li>
+                <li>[[MAUR]] DV-10 Allow the user to select from among different languages of descriptions, if available, even if they are different from the language of the main soundtrack.</li>
+                <li>[[MAUR]] DV-13 Support metadata, such as   copyright information, usage rights, language, etc.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR4</td>
+            <td>2</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be extensible to allow incorporation of data required to achieve the desired quality of audio presentation, whether manual or automated.
+                  For example it is typical to include information about what gender and age voice would be appropriate to voice the descriptions;
+                  it is also feasible to include data used to improve the quality of text to speech synthesis, such as phonetic descriptions of the text, intonation and emotion data etc.</li>
+                <li>The format of any  extensions for this purpose need not be defined.</li>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR12</td>
+            <td>3</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to reference audio tracks either included as binary data within the document or separately.</li>
+                <li>[[MAUR]] DV-4 Support recordings of high quality speech as a track of the media resource, or as an external file.</li>
+                <li>[[MAUR]] DV-9 Allow the author to use a codec which is optimized for voice only, rather than requiring the same codec as the original soundtrack.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR5</td>
+            <td>3</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to associate a begin time with the beginning of playback of each audio track, for the case that multiple audio tracks are created, one per description.</li>
+                <li>[[MAUR]] DV-2 Render descriptions in a time-synchronized manner, using the primary media resource as the timebase master.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR6</td>
+            <td>3</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to associate a begin time with a playback entry time within an audio track, for the case that a single audio track is generated that is the same duration as the main programme audio.</li>
+                <li>The begin time and the playback entry time may be required to be synchronous (coincident values) within the document structure.</li>
+                <li>[[MAUR]] DV-2 Render descriptions in a time-synchronized manner, using the primary media resource as the timebase master.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR7</td>
+            <td>4</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to associate a left/right pan value with playback of each or every audio description.
+                  This value applies to the audio description prior to mixing with the main programme audio.</li>
+                <li>[[MAUR]] DV-8 Allow the author to provide fade and pan controls to be accurately synchronized with the original soundtrack.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR8</td>
+            <td>5</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The document must be able to define a fade level curve that applies to the main programme audio prior to mixing with the audio description, where that fade level curve is defined by a set of pairs of level and times and an interpolation algorithm. </li>
+                <li>[[MAUR]] DV-5 Allow the author to independently adjust the volumes of the audio description and original soundtracks where these are available as separate audio channel resources.</li>
+                <li>[[MAUR]] DV-7 Permit smooth changes in volume rather than stepped changes. The degree and speed of volume change should be under user control.</li>
+                <li>[[MAUR]] DV-8 Allow the author to provide fade and pan controls to be accurately synchronized with the original soundtrack.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR9</td>
+            <td>6</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The processor must be able to generate a set of directives to control an audio mixer to generate the desired audio description mixed audio track honouring the pan and fade information within the document.</li>
+                <li>The format of those directives may be implementation dependent.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR10</td>
+            <td>6</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The processor may modify the audio mixer control directives under user control to customise the relative levels of main programme audio and audio description, and the pan information.</li>
+                <li>[[MAUR]] DV-6 Allow the user to independently adjust the volumes of the audio description and original soundtracks (where these are available as separate audio channel resources), with the user's settings overriding the author's.</li>
+                <li>[[MAUR]] DV-12 Allow the user to relocate the pan location of the various audio tracks within the audio field, with the user setting overriding the author setting.</br>
+                  The setting should be re-adjustable as the media plays.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>ADR11</td>
+            <td>6</td>
+            <td>
+              <ul style="list-style-type:disc">
+                <li>The audio mixing transitions and semantics must be implementable using [[WEBAUDIO]], specifically relating to the application of gain and pan as defined therein and the interpolation between values.</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class ="note">
+        [[WEBAUDIO]] specifies three interpolation mechanisms for traversing from one parameter value to another: linear, exponential and linear interpolation between points on a curve, where the default ramp e.g. for setTargetAtTime uses an exponential interpolation.
       </p>
     </section>
-    <section class="appendix" id="example2-section">
-      <h2>Example 2</h2>
-      <p class="example" style="width:100%">
-        <textarea rows="25" style="width:100%" readonly>
-...
-<div tta:gain="0.8">
-  <p>
-    <animate begin="1s" end="2s" tta:gain="1; 0.5">
-    <animate begin="3s" end="4s" tta:gain="1; 0.5">
-    <span begin="2s" end="3s">
-      Imagine this is a description
-    </span>
-  </p>
-  <p>
-    <animate begin="10s" end="12s" tta:gain="1; 0.5">
-    <animate begin="13s" end="14s" tta:gain="1; 0.5">
-    <span begin="12s" end="13s">
-      And this is another description
-    </span>
-  </p>
-</div>
-...
-        </textarea>
+    
+    <section class="appendix" id="webaudio-section">
+      <h2>Web Audio Mixing</h2>
+      <p>
+        <img src="Web Audio Graph.png" alt="An image illustrating the effect of pan and gain on audio in a WEBAUDIO process" width="100%">
       </p>
+      <p>
+        Every content element in the audio tree creates a mixer that adds the audio from its parent and its audio element children, and optionally applies a pan and gain to the output.
+      </p>
+      <p>
+        Every audio element provides an audio input from some audio resource, with its own pan and gain.
+      </p>
+      <p>
+        The output of every content element’s audio is passed to each of its children.
+      </p>
+      <p>
+        The audio output of all the leaf content elements is mixed together on the “master bus” in Web Audio terms.
+      </p>
+      <pre class="example"
+        data-include="examples/gain-example.xml"
+        data-include-format="text">
+      </pre>
+
       <p>
         <img src="Gain image.png" alt="An image illustrating the effect of gain on audio levels" width="100%">
       </p>
     </section>
-    <section class="appendix" id="example3-section">
-      <h2>Example 3</h2>
-      <p class="example" style="width:100%">
-        <textarea rows="67" style="width:100%" readonly>
-<?xml version="1.0" encoding="UTF-8"?>
-  <body>
-    <tt xmlns="http://www.w3.org/ns/ttml" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en">
-    <div>
-      <audio src=";track=1" tta:pan="-1"/>
-      <audio src=";track=2" tta:pan="1"/>
-      <p xml:id="ad21b" begin="5.48s" end="19.44s" tta:gain="0.25">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="13.84s" end="13.96s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="13.84s" tta:gain="0.25">
-          <audio src="DRAD182Y01.wav" clipBegin="11.6s" clipEnd="24.32s"/>
-          BBC Eastenders written by Colin Wyatt starring June Brown as Dot, John Altman as Nick, Declan Bennett as Charlie and Samantha Womack as Ronnie.</span>
-      </p>
-      <p xml:id="ad31b" begin="30.56s" end="32.84s" tta:gain="0.25">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="2.16s" end="2.28s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="2.16s" tta:gain="0.25">
-          <audio src="DRAD182Y01.wav" clipBegin="35.68s" clipEnd="37.72s"/>
-          Nick takes a drag of his cigarette.</span>
-      </p>
-      <p xml:id="ad41b" begin="49.32s" end="51.16s">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="1.72s" end="1.84s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="1.72s">
-          <audio src="DRAD182Y01.wav" clipBegin="54.44s" clipEnd="56.04s"/>
-          Nick gets up.</span>
-      </p>
-      <p xml:id="ad51b" begin="54.92s" end="57.08s">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="2.04s" end="2.16s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="2.04s">
-          <audio src="DRAD182Y01.wav" clipBegin="60.04s" clipEnd="61.96s"/>
-          He grabs a knife.</span>
-      </p>
-      <p xml:id="ad61b" begin="62.24s" end="71.52s">
-        <ttm:desc ttm:role="x-shotDescription">SHOT CHANGE: 62.36s Nick Cotton centre screen facing right.</ttm:desc>
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="9.16s" end="9.28s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="9.16s">
-          <audio src=";track=2" tta:gain="0.25"/>
-          Ronnie looks worried but he grabs a swiss roll from a carrier bag and roughly cuts off two slices offering her one on the end of a knife.</span>
-      </p>
-      <p xml:id="ad71b" begin="79.2s" end="82.12s">
-        <ttm:desc ttm:role="x-pronunciationNote">PRON: Koosh.</ttm:desc>
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="2.8s" end="2.92s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="2.8s">
-          <audio src="DRAD182Y01.wav" clipBegin="84.32s" clipEnd="87.0s"/>
-          Sonia leaves the Vic followed by Kush </span>
-      </p>
-      <p xml:id="ad91b" begin="115.16s" end="117.12s">
-        <animate begin="0.0s" end="0.12s" tta:gain="1;0.39"/>
-        <animate begin="1.84s" end="1.96s" tta:gain="0.39;1"/>
-        <span begin="0.12s" end="1.84s">
-          <audio src="DRAD182Y01.wav" clipBegin="120.28s" clipEnd="122.0s"/>
-          At Dot's...</span>
-      </p>
-    </div>
-  </body>
-</tt>
-        </textarea>
-      </p>
+
+    <section class="appendix informative" id="bbc-example-section">
+      <h2>Real world worked example: BBC</h2>
+      <p>This section includes part of a real world audio description script
+      generated by the BBC for its Eastenders television programme.</p>
+      <pre class="example"
+        data-include="examples/bbc-eastenders-ad.xml"
+        data-include-format="text">
+      </pre>
       <p>
         We have a div element that wraps all the other content. Crucially it includes two audio element children, which do a few things:
         <ul>
@@ -1331,24 +1221,7 @@ xmlns:tta="http://www.w3.org/ns/ttml#audio" xmlns:xlink="http://www.w3.org/1999/
         This structure is implemented in the mixing code by constructing a Web Audio Graph, where the outputs of all the spans are, in the end, mixed together.
       </p>
     </section>
-    <section class="appendix" id="webaudio-section">
-      <h2>Web Audio Mixing</h2>
-      <p>
-        <img src="Web Audio Graph.png" alt="An image illustrating the effect of pan and gain on audio in a WEBAUDIO process" width="100%">
-      </p>
-      <p>
-        Every content element in the audio tree creates a mixer that adds the audio from its parent and its audio element children, and optionally applies a pan and gain to the output.
-      </p>
-      <p>
-        Every audio element provides an audio input from some audio resource, with its own pan and gain.
-      </p>
-      <p>
-        The output of every content element’s audio is passed to each of its children.
-      </p>
-      <p>
-        The audio output of all the leaf content elements is mixed together on the “master bus” in Web Audio terms.
-      </p>
-    </section>
+    
     <section class="appendix" id="acknowledgements-section">
       <h2>Acknowledgements)</h2>
         <p>

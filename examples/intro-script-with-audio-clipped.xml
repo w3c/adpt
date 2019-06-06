@@ -1,0 +1,9 @@
+...
+    <div begin="10s" end="13s">
+      <p>
+        <span>
+          <audio src="long_audio.wav" clipBegin="5s" clipEnd="8s"/>
+          A woman climbs into a small sailing boat.</span>
+      </p>
+    </div>
+...
