@@ -8,10 +8,10 @@
       // See https://github.com/w3c/respec/wiki/ for how to configure ReSpec
       var respecConfig = {
         specStatus: "CG-DRAFT",
-        wg: "Audio Description Community Group",
-        wgURI: "https://www.w3.org/community/audio-description/",
+        group: "cg/audio-description",
         wgPublicList: "public-audio-description",
-        shortName: "adept",
+        shortName: "adpt",
+        github: "w3c/adpt",
         tocIntroductory: true,
         localBiblio: {
           "WHP051": {
@@ -29,71 +29,84 @@
             publisher: "W3C TTWG",
             status: "Draft",
             href: "https://github.com/w3c/ttml2/wiki/Audio-Description-Requirements",
-          }
-        },
-        editors: [ {
-        name: "John Birch",
-        company: "Screen Subtitling Systems Ltd.",
-        companyURL: "http://www.subtitling.com",
-        },
-        {
-        name: "Nigel Megitt",
-        company: "British Broadcasting Corporation",
-        companyURL: "https://www.bbc.co.uk/",
-        }],
-        authors: [ {
-        name: "Peter Spoor",
-        company: "The Service Station",
-        },
-        {
-        name: "Marisa DeMeglio",
-        company: "DAISY consortium",
-        },
-        {
-        name: "Chris O’Brien",
-        company: "Accessible Media INC",
-        },
-        {
-        name: "Hewson Maxwell",
-        company: "Red Bee Media",
-        }, {
-        name: "Jonathan Penny",
-        company: "ITV",
-        }, {
-        name: "Matt Simpson",
-        company: "Cut and Paste Consulting",
-        }, {
-        company: "YellaUmbrella",
-        name: "Simon Hailes, Matt Deakin",
-        },
-        {
-          company: "Prime Focus",
-          name: "Radhika Chinai, Gandharv Bhagat, Bipin Doshi",
-        },
-        {
-          company: "Deluxe",
-          name: "Margaret Lazenby, Ian Beushaw, Paul Gray",
-        },
-        {
-          company: "British Broadcasting Corporation",
-          name: "Nigel Megitt, Eyal Lavi",
-        },
-        {
-          company: "RNIB",
-          name: "Sonali Rai, John Paton",
-        },
-        {
-          company: "Screen Subtitling Systems Ltd.",
-          name: "John Birch",
-        },
-        {
-          company: "Starfish",
-          name: "Graham Neden-Watts",
-        },
-        {
-          company: "SWR",
-          name: "Philip Klenk"
-        }]
+          },
+          "ttml2": {
+            "authors":["Glenn Adams","Cyril Concolato"],
+            "href":"https://www.w3.org/TR/2018/REC-ttml2-20181108/",
+            "title":"Timed Text Markup Language 2 (TTML2)",
+            "status":"REC",
+            "publisher":"W3C",
+            "id":"ttml2-20181108",
+            "date":"8 November 2018"
+          },        },
+        editors: [ 
+          {
+            name: "John Birch",
+            company: "Screen Subtitling Systems Ltd.",
+            companyURL: "http://www.subtitling.com",
+          },
+          {
+            name: "Nigel Megitt",
+            company: "British Broadcasting Corporation",
+            companyURL: "https://www.bbc.co.uk/",
+          }],
+          authors: [ {
+            name: "Peter Spoor",
+            company: "The Service Station",
+          },
+          {
+            name: "Marisa DeMeglio",
+            company: "DAISY consortium",
+          },
+          {
+            name: "Chris O’Brien",
+            company: "Accessible Media INC",
+          },
+          {
+            name: "Hewson Maxwell",
+            company: "Red Bee Media",
+          },
+          {
+            name: "Jonathan Penny",
+            company: "ITV",
+          },
+          {
+            name: "Matt Simpson",
+            company: "Cut and Paste Consulting",
+          },
+          {
+            company: "YellaUmbrella",
+            name: "Simon Hailes, Matt Deakin",
+          },
+          {
+            company: "Prime Focus",
+            name: "Radhika Chinai, Gandharv Bhagat, Bipin Doshi",
+          },
+          {
+            company: "Deluxe",
+            name: "Margaret Lazenby, Ian Beushaw, Paul Gray",
+          },
+          {
+            company: "British Broadcasting Corporation",
+            name: "Nigel Megitt, Eyal Lavi",
+          },
+          {
+            company: "RNIB",
+            name: "Sonali Rai, John Paton",
+          },
+          {
+            company: "Screen Subtitling Systems Ltd.",
+            name: "John Birch",
+          },
+          {
+            company: "Starfish",
+            name: "Graham Neden-Watts",
+          },
+          {
+            company: "SWR",
+            name: "Philip Klenk"
+          },
+        ]
       };
     </script>
   </head>
@@ -232,28 +245,28 @@
         <dfn>Audio description mixed audio track</dfn>  The output of an audio mixer incorporating the main programme audio and the audio description.
       </p>
       <p>
-        <dfn>Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or speech to text translation.
+        <dfn>Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for speech to text translation.
       </p>
       <p>
-        <dfn>Default Region</dfn> See Section 11.3.1.1 at [][TTML2]].
+        <dfn data-cite="ttml2#terms-default-region">Default Region</dfn> See Section 11.3.1.1 at [][TTML2]].
       </p>
       <p>
-        <dfn>Document Instance</dfn>  See Section 2.2 at [[TTML2]].
+        <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> As defined by [[TTML2]].
       </p>
       <p>
-        <dfn>Document Interchange Context</dfn> See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-document-interchange-context">Document Interchange Context</dfn> As defined by [[TTML2]].
       </p>
       <p>
-        <dfn>Document Processing Context</dfn>  See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-document-processing-context">Document Processing Context</dfn>  See Section 2.2 at [[TTML2]].
       </p>
       <p>
-        <dfn>Feature</dfn>  See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-feature">Feature</dfn>  See Section 2.2 at [[TTML2]].
       </p>
       <p>
-        <dfn>Intermediate Synchronic Document</dfn> See Section 11.3.1.3 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> See Section 11.3.1.3 at [[TTML2]].
       </p>
       <p>
-        <dfn>Linear White-Space</dfn> See Section 2.3 at [[TTML2]].
+        <dfn data-cite="ttml2#style-value-lwsp">Linear White-Space</dfn> See Section 2.3 at [[TTML2]].
       </p>
       <p>
         <dfn>Main programme audio</dfn> The audio associated with the programme prior to any mixing with audio description.
@@ -263,22 +276,22 @@
         Markup files contain standard words, rather than typical programming syntax.
       </p>
       <p>
-        <dfn>Presentation processor</dfn> See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> See Section 2.2 at [[TTML2]].
       </p>
       <p>
-        <dfn>Processor</dfn>  Either a Presentation processor or a Transformation processor.
+        <dfn data-cite="ttml2#terms-processor">Processor</dfn>  Either a Presentation processor or a Transformation processor.
       </p>
       <p>
-        <dfn>Profile</dfn>  A TTML profile specification is a document that lists all the features of TTML that are required / optional / prohibited within “document instances” (files) and “processors” (things that process the files), and any extensions or constraints.
+        <dfn data-cite="ttml2#terms-profile">Profile</dfn>  A TTML profile specification is a document that lists all the features of TTML that are required / optional / prohibited within “document instances” (files) and “processors” (things that process the files), and any extensions or constraints.
       </p>
       <p>
-        <dfn>Related Media Object</dfn> See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> See Section 2.2 at [[TTML2]].
       </p>
       <p>
-        <dfn>Related Video Object</dfn> A Related Media Object that consists of a sequence of image frames, each a rectangular array of pixels.
+        <dfn>Related Video Object</dfn> A <a>Related Media Object</a> that consists of a sequence of image frames, each a rectangular array of pixels.
       </p>
       <p>
-        <dfn>Root Container Region</dfn>  See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-root-container-region">Root Container Region</dfn>  See Section 2.2 at [[TTML2]].
       </p>
       <p>
         <dfn>Text Alternative</dfn> As defined in [[WCAG20]].
@@ -287,10 +300,10 @@
         <dfn>Timed Text</dfn> Text media that is presented in synchrony with other media, such as audio and video with (optional) specified text presentation styling information such as font, colour and position.
       </p>
       <p>
-        <dfn>Transformation processor</dfn> See Section 2.2 at [[TTML2]].
+        <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> See Section 2.2 at [[TTML2]].
       </p>
       <p>
-        <dfn>TTML</dfn> A Markup Language designed for the storage and delivery of Timed Text, primarily used in the television industry.
+        <dfn>TTML</dfn> A Markup Language designed for the storage and delivery of Timed Text, as defined in [[TTML2]] primarily used in the television industry.
         TTML is used for authoring, transcoding and exchanging timed text information and for delivering captions, subtitles, and other metadata for television material repurposed for the Web or, more generally, the Internet.
       </p>
     </section>
@@ -449,10 +462,10 @@
       <section id="related-video-object-section">
         <h3>Related Video Object</h3>
         <p>
-          A Document Instance MAY be associated with a Related Video Object.
+          A Document Instance MAY be associated with a <a>Related Video Object</a>.
         </p>
         <p class="note">
-          While this specification contains specific provisions when a Document Instance is associated with a Related Video Object, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
+          While this specification contains specific provisions when a Document Instance is associated with a <a>Related Video Object</a>, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
         </p>
       </section>
       <section id="synchronization-section">
@@ -461,15 +474,15 @@
           Each intermediate synchronic document of the Document Instance is intended to be presented (audible) starting on a specific frame and removed (inaudible) by a specific frame of the Related Video Object.
         </p>
         <p>
-          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a Document Instance into the main program audio of the Related Video Object, the presentation processor SHALL map M to the frame F with the presentation time that is the closest to, but not less, than M.
+          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a Document Instance into the main program audio of the <a>Related Video Object</a>, the presentation processor SHALL map M to the frame F with the presentation time that is the closest to, but not less, than M.
         </p>
         <p>
           EXAMPLE 1
-          A media time expression of 00:00:05.1 corresponds to frame ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153 of a related video object with a frame rate of 1000 / 1001 × 30 ≈ 29.97.
+          A media time expression of 00:00:05.1 corresponds to frame ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153 of a <a>Related Video Object</a> with a frame rate of 1000 / 1001 × 30 ≈ 29.97.
         </p>
         <p class="note">
-          In typical scenario, the same video program (the Related Video Object) will be used for Document Instance authoring, delivery and user playback.
-          The mapping from media time expression to Related Video Object above allows the author to precisely associate audio description content with video frames, e.g. around existing audio dialogue and sound effects.
+          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for Document Instance authoring, delivery and user playback.
+          The mapping from media time expression to <a>Related Video Object</a> above allows the author to precisely associate audio description content with video frames, e.g. around existing audio dialogue and sound effects.
           In circumstances where the video program is downsampled during delivery, the application can specify that, at playback, the relative video object be considered the delivered video program upsampled to is original rate, thereby allowing audio content to be presented at the same temporal locations it was authored.
         </p>
       </section>
