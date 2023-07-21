@@ -1,3 +1,11 @@
+# adpt work discontinued in favour of DAPT
+
+The work done here on adpt has been used at least in part as the basis for [DAPT](https://www.w3.org/TR/dapt/),
+under development by the [Timed Text Working Group](https://www.w3.org/AudioVideo/TT/#recent-activity).
+DAPT's scope additionally includes the creation of dubbing scripts.
+
+No further work is expected on ADPT.
+
 # adpt
 The Audio Description Profile of TTML2, by the [Timed Text Working Group](https://www.w3.org/AudioVideo/TT/#recent-activity) 
 is a profile of TTML2 suitable for the scripting, voicing and audio mixing of audio descriptions for videos.
